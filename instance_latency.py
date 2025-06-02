@@ -10,27 +10,27 @@ indicator = int(input("Enter 0 or 1 which specify kernel or user: "))
 # 従来手法のデータのファイル名
 if indicator == 0:
     filename_conventional = [
-        "Latency-vs-Instances/netdata-kernel-interval0.01-instance1.csv",
-        "Latency-vs-Instances/netdata-kernel-interval0.01-instance5.csv",
-        "Latency-vs-Instances/netdata-kernel-interval0.01-instance10.csv"
+        "Latency-vs-Instances/netdata-kernel-instance-1.csv",
+        "Latency-vs-Instances/netdata-kernel-instance-5.csv",
+        "Latency-vs-Instances/netdata-kernel-instance-10.csv"
     ]
 # 提案手法のデータのファイル名
     filename_proposal = [
-        "Latency-vs-Instances/xdp-kernel-interval0.01-instance1.csv",
-        "Latency-vs-Instances/xdp-kernel-interval0.01-instance5.csv",
-        "Latency-vs-Instances/xdp-kernel-interval0.01-instance10.csv"
+        "Latency-vs-Instances/xdp-kernel-instance-1.csv",
+        "Latency-vs-Instances/xdp-kernel-instance-5.csv",
+        "Latency-vs-Instances/xdp-kernel-instance-10.csv"
     ]
 elif indicator == 1:
     filename_conventional = [
-        "Latency-vs-Instances/netdata-user-interval0.01-instance1.csv",
-        "Latency-vs-Instances/netdata-user-interval0.01-instance5.csv",
-        "Latency-vs-Instances/netdata-user-interval0.01-instance10.csv"
+        "Latency-vs-Instances/netdata-user-instance-1.csv",
+        "Latency-vs-Instances/netdata-user-instance-5.csv",
+        "Latency-vs-Instances/netdata-user-instance-10.csv"
     ]
 # 提案手法のデータのファイル名
     filename_proposal = [
-        "Latency-vs-Instances/xdp-user-interval0.01-instance1.csv",
-        "Latency-vs-Instances/xdp-user-interval0.01-instance5.csv",
-        "Latency-vs-Instances/xdp-user-interval0.01-instance10.csv"
+        "Latency-vs-Instances/xdp-user-instance-1.csv",
+        "Latency-vs-Instances/xdp-user-instance-5.csv",
+        "Latency-vs-Instances/xdp-user-instance-10.csv"
     ]
 else:
     print("The number you entered is not moderate")
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     latency_999_conventional = calc_999_percentile(raw_latency_conventional)
     latency_999_proposal = calc_999_percentile(raw_latency_proposal)
 
-    print("50%ile   : 0")
+    print("average  : 0")
     print("90%ile   : 1")
     print("99%ile   : 2")
     print("99.9%ile : 3")
@@ -88,4 +88,4 @@ if __name__ == "__main__":
         print("Input moderate number")
 
     show_bar_graph(conventional, proposal,
-                   instance_num_list, "Redis Instances", graph_time_unit, log_scale=use_log_scale)
+                   instance_num_list, "Memcached Instances", graph_time_unit, log_scale=use_log_scale)

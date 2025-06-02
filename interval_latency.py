@@ -11,27 +11,27 @@ indicator = int(input("Enter 0 or 1 which specify kernel or user: "))
 #
 if indicator == 0:
     filename_conventional = [
-        "Latency-vs-Intervals/netdata-kernel-interval1-instance10.csv",
-        "Latency-vs-Intervals/netdata-kernel-interval0.1-instance10.csv",
-        "Latency-vs-Intervals/netdata-kernel-interval0.01-instance10.csv"
+        "Latency-vs-Intervals/netdata-kernel-Interval-1000ms.csv",
+        "Latency-vs-Intervals/netdata-kernel-Interval-100ms.csv",
+        "Latency-vs-Intervals/netdata-kernel-Interval-10ms.csv"
     ]
     # 提案手法のデータのファイル名
     filename_proposal = [
-        "Latency-vs-Intervals/xdp-kernel-interval1-instance10.csv",
-        "Latency-vs-Intervals/xdp-kernel-interval0.1-instance10.csv",
-        "Latency-vs-Intervals/xdp-kernel-interval0.01-instance10.csv"
+        "Latency-vs-Intervals/xdp-kernel-Interval-1000ms.csv",
+        "Latency-vs-Intervals/xdp-kernel-Interval-100ms.csv",
+        "Latency-vs-Intervals/xdp-kernel-Interval-10ms.csv"
     ]
 elif indicator == 1:
     filename_conventional = [
-        "Latency-vs-Intervals/netdata-user-interval1-instance10.csv",
-        "Latency-vs-Intervals/netdata-user-interval0.1-instance10.csv",
-        "Latency-vs-Intervals/netdata-user-interval0.01-instance10.csv"
+        "Latency-vs-Intervals/netdata-user-Interval-1000ms.csv",
+        "Latency-vs-Intervals/netdata-user-Interval-100ms.csv",
+        "Latency-vs-Intervals/netdata-user-Interval-10ms.csv"
     ]
     # 提案手法のデータのファイル名
     filename_proposal = [
-        "Latency-vs-Intervals/xdp-user-interval1-instance10.csv",
-        "Latency-vs-Intervals/xdp-user-interval0.1-instance10.csv",
-        "Latency-vs-Intervals/xdp-user-interval0.01-instance10.csv"
+        "Latency-vs-Intervals/xdp-user-Interval-1000ms.csv",
+        "Latency-vs-Intervals/xdp-user-Interval-100ms.csv",
+        "Latency-vs-Intervals/xdp-user-Interval-10ms.csv"
     ]
 else:
     print("The number you entered is not moderate.")
