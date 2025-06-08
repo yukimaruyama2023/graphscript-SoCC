@@ -9,30 +9,29 @@ interval_list = [1000, 100, 10]
 indicator = int(input("Enter 0 or 1 which specify kernel or user: "))
 # 従来手法のデータのファイル名
 #
-dir = "Latency-vs-Interval-numa-conf"
 if indicator == 0:
     filename_conventional = [
-        f"{dir}/netdata-kernel-Interval-1000ms.csv",
-        f"{dir}/netdata-kernel-Interval-100ms.csv",
-        f"{dir}/netdata-kernel-Interval-10ms.csv"
+        "Latency-vs-Intervals/netdata-kernel-Interval-1000ms.csv",
+        "Latency-vs-Intervals/netdata-kernel-Interval-100ms.csv",
+        "Latency-vs-Intervals/netdata-kernel-Interval-10ms.csv"
     ]
     # 提案手法のデータのファイル名
     filename_proposal = [
-        f"{dir}/xdp-kernel-Interval-1000ms.csv",
-        f"{dir}/xdp-kernel-Interval-100ms.csv",
-        f"{dir}/xdp-kernel-Interval-10ms.csv"
+        "Latency-vs-Intervals/xdp-kernel-Interval-1000ms.csv",
+        "Latency-vs-Intervals/xdp-kernel-Interval-100ms.csv",
+        "Latency-vs-Intervals/xdp-kernel-Interval-10ms.csv"
     ]
 elif indicator == 1:
     filename_conventional = [
-        f"{dir}/netdata-user-Interval-1000ms.csv",
-        f"{dir}/netdata-user-Interval-100ms.csv",
-        f"{dir}/netdata-user-Interval-10ms.csv"
+        "Latency-vs-Intervals/netdata-user-Interval-1000ms.csv",
+        "Latency-vs-Intervals/netdata-user-Interval-100ms.csv",
+        "Latency-vs-Intervals/netdata-user-Interval-10ms.csv"
     ]
     # 提案手法のデータのファイル名
     filename_proposal = [
-        f"{dir}/xdp-user-Interval-1000ms.csv",
-        f"{dir}/xdp-user-Interval-100ms.csv",
-        f"{dir}/xdp-user-Interval-10ms.csv"
+        "Latency-vs-Intervals/xdp-user-Interval-1000ms.csv",
+        "Latency-vs-Intervals/xdp-user-Interval-100ms.csv",
+        "Latency-vs-Intervals/xdp-user-Interval-10ms.csv"
     ]
 else:
     print("The number you entered is not moderate.")
@@ -73,23 +72,30 @@ if __name__ == "__main__":
     if input == 0:
         conventional = average_latency_conventional
         proposal = average_latency_proposal
+        print(conventional)
+        print(proposal)
     elif input == 1:
         conventional = latency_90_conventional
         proposal = latency_90_proposal
+        print(conventional)
+        print(proposal)
     elif input == 2:
         conventional = latency_99_conventional
-        proposal = latency_99_proposal
+        proposal = latency_99_proposal  # 修正済み
+        print(conventional)
+        print(proposal)
     elif input == 3:
         conventional = latency_999_conventional
         proposal = latency_999_proposal
+        print(conventional)
+        print(proposal)
     elif input == 4:
         conventional = latency_max_conventional
         proposal = latency_max_proposal
+        print(conventional)
+        print(proposal)
     else:
-        raise ValueError("Invalid input")
-
-    print([f"{x:.3f}" for x in conventional])
-    print([f"{x:.3f}" for x in proposal])
+        print("Input moderate number")
 
     show_bar_graph(conventional, proposal,
                    interval_list, "Sample Interval (ms)", graph_time_unit, log_scale=use_log_scale)
