@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from typing import List
 
+
 """
 生データ(csv)をロードする
 
@@ -123,3 +124,58 @@ def show_bar_graph(conventional, proposal, x_values, x_label, time_unit="us", lo
 
     # グラフを表示
     plt.show()
+
+
+def show_bar_graph_multi(data_series_list, x_labels, legends,
+                         xlabel="", unit="", log_scale=False):
+    x = np.arange(len(x_labels))
+    total_width = 0.8
+    num_series = len(data_series_list)
+    bar_width = total_width / num_series
+
+    # グラフのサイズを統一
+    fig, ax = plt.subplots(figsize=(7, 6))
+
+    for i, data in enumerate(data_series_list):
+        offset = (i - num_series / 2) * bar_width + bar_width / 2
+        ax.bar(x + offset, data, width=bar_width, label=legends[i])
+
+    # 軸設定
+    ax.set_xticks(x)
+    ax.set_xticklabels(x_labels)
+    ax.set_xlabel(xlabel, fontsize=16, labelpad=10)
+    ax.set_ylabel(f"Latency ({unit})", fontsize=16, labelpad=10)
+
+    # 対数スケール
+    if log_scale:
+        ax.set_yscale('log')
+
+    ax.legend(loc="upper left", fontsize=14)
+
+    fig.tight_layout()
+    plt.show()
+
+# def show_bar_graph_multi(data_series_list, x_labels, legends,
+#                          xlabel="", unit="", log_scale=False):
+#     x = np.arange(len(x_labels))  # x軸の位置（インターバル）
+#
+#     total_width = 0.8
+#     num_series = len(data_series_list)
+#     bar_width = total_width / num_series
+#
+#     fig, ax = plt.subplots()
+#
+#     for i, data in enumerate(data_series_list):
+#         offset = (i - num_series / 2) * bar_width + bar_width / 2
+#         ax.bar(x + offset, data, width=bar_width, label=legends[i])
+#
+#     ax.set_xticks(x)
+#     ax.set_xticklabels(x_labels)
+#     ax.set_xlabel(xlabel)
+#     ax.set_ylabel(f"Latency ({unit})")
+#     if log_scale:
+#         ax.set_yscale('log')
+#     ax.legend()
+#     ax.grid(axis='y')
+#     plt.tight_layout()
+#     plt.show()

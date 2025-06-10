@@ -12,16 +12,27 @@ mode = input("Input: kernel or user: ").strip().lower()
 if mode not in ["kernel", "user"]:
     raise ValueError("kernel または user を入力してください。")
 
-# 描画順序に対応するラベル
-labels = ["no-monitoring", "netdata-1000ms", "netdata-100ms", "netdata-10ms",
-          "xdp-1000ms", "xdp-100ms", "xdp-10ms"]
+# スケジューリングポリシー（rr または fifo）
+policy = input("Input scheduling policy (rr or fifo): ").strip().lower()
+if policy not in ["rr", "fifo"]:
+    raise ValueError("rr または fifo を入力してください。")
 
-# 対応するファイルリスト（no-monitoring は 2 のみ）
+# ラベルとファイルマッピング
+labels = [
+    "no-monitoring",
+    "netdata-1000ms", "netdata-100ms", "netdata-10ms",
+    "netdata-1000ms-priority", "netdata-100ms-priority", "netdata-10ms-priority",
+    "xdp-1000ms", "xdp-100ms", "xdp-10ms"
+]
+
 file_patterns = {
     "no-monitoring": ["no-monitoring-2.txt"],
     "netdata-1000ms": [f"netdata-{mode}-1000ms.txt"],
     "netdata-100ms": [f"netdata-{mode}-100ms.txt"],
     "netdata-10ms": [f"netdata-{mode}-10ms.txt"],
+    "netdata-1000ms-priority": [f"netata-{mode}-1000ms-pri-{policy}.txt"],
+    "netdata-100ms-priority": [f"netata-{mode}-100ms-pri-{policy}.txt"],
+    "netdata-10ms-priority": [f"netata-{mode}-10ms-pri-{policy}.txt"],
     "xdp-1000ms": [f"xdp-{mode}-1000ms.txt"],
     "xdp-100ms": [f"xdp-{mode}-100ms.txt"],
     "xdp-10ms": [f"xdp-{mode}-10ms.txt"],
@@ -60,21 +71,21 @@ for label in labels:
     means.append(np.mean(values) if values else 0)
     stds.append(np.std(values) if len(values) > 1 else 0)
 
-# 棒グラフを描画
-plt.figure(figsize=(12, 6))
+# 棒グラフ描画
+plt.figure(figsize=(14, 6))
 x = np.arange(len(labels))
-# 棒の色を指定
+
+# 色を指定
 colors = [
     "purple",     # no-monitoring
-    "orange",   # netdata
-    "orange",
-    "orange",
-    "blue",    # xdp
-    "blue",
-    "blue"
+    "orange", "orange", "orange",        # netdata
+    "red", "red", "red",                 # netdata-priority
+    "blue", "blue", "blue"              # xdp
 ]
+
 plt.bar(x, means, color=colors)
 plt.xticks(x, labels, rotation=45)
 plt.ylabel("Throughput (ops/sec)")
+plt.title(f"Throughput Comparison (mode: {mode}, sched: {policy})")
 plt.tight_layout()
 plt.show()

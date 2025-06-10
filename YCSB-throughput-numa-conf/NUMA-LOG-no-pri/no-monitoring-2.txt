@@ -137,44 +137,51 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary for YCSB Root 0.18.0-SNAPSHOT:
 [INFO] 
-[INFO] YCSB Root .......................................... SUCCESS [  1.675 s]
-[INFO] Core YCSB .......................................... SUCCESS [  2.109 s]
-[INFO] Per Datastore Binding descriptor ................... SUCCESS [  0.117 s]
-[INFO] YCSB Datastore Binding Parent ...................... SUCCESS [  0.270 s]
-[INFO] memcached binding .................................. SUCCESS [  1.099 s]
+[INFO] YCSB Root .......................................... SUCCESS [  1.249 s]
+[INFO] Core YCSB .......................................... SUCCESS [  1.887 s]
+[INFO] Per Datastore Binding descriptor ................... SUCCESS [  0.114 s]
+[INFO] YCSB Datastore Binding Parent ...................... SUCCESS [  0.257 s]
+[INFO] memcached binding .................................. SUCCESS [  1.101 s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  5.723 s
-[INFO] Finished at: 2025-06-10T01:12:31+09:00
+[INFO] Total time:  4.986 s
+[INFO] Finished at: 2025-06-09T04:06:14+09:00
 [INFO] ------------------------------------------------------------------------
-Warning: the threadcount is bigger than recordcount, the threadcount will be recordcount!
-[OVERALL], RunTime(ms), 142
-[OVERALL], Throughput(ops/sec), 7.042253521126761
-[TOTAL_GCS_G1_Young_Generation], Count, 0
-[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 0
-[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.0
+[OVERALL], RunTime(ms), 64083
+[OVERALL], Throughput(ops/sec), 12483.810058829955
+[TOTAL_GCS_G1_Young_Generation], Count, 592
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 527
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.8223709876254234
 [TOTAL_GCS_G1_Concurrent_GC], Count, 0
 [TOTAL_GC_TIME_G1_Concurrent_GC], Time(ms), 0
 [TOTAL_GC_TIME_%_G1_Concurrent_GC], Time(%), 0.0
 [TOTAL_GCS_G1_Old_Generation], Count, 0
 [TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
 [TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
-[TOTAL_GCs], Count, 0
-[TOTAL_GC_TIME], Time(ms), 0
-[TOTAL_GC_TIME_%], Time(%), 0.0
-[CLEANUP], Operations, 1
-[CLEANUP], AverageLatency(us), 3185.0
-[CLEANUP], MinLatency(us), 3184
-[CLEANUP], MaxLatency(us), 3185
-[CLEANUP], 50thPercentileLatency(us), 3185
-[CLEANUP], 95thPercentileLatency(us), 3185
-[CLEANUP], 99thPercentileLatency(us), 3185
-[INSERT], Operations, 1
-[INSERT], AverageLatency(us), 41040.0
-[INSERT], MinLatency(us), 41024
-[INSERT], MaxLatency(us), 41055
-[INSERT], 50thPercentileLatency(us), 41055
-[INSERT], 95thPercentileLatency(us), 41055
-[INSERT], 99thPercentileLatency(us), 41055
-[INSERT], Return=OK, 1
+[TOTAL_GCs], Count, 592
+[TOTAL_GC_TIME], Time(ms), 527
+[TOTAL_GC_TIME_%], Time(%), 0.8223709876254234
+[CLEANUP], Operations, 24
+[CLEANUP], AverageLatency(us), 2431.0416666666665
+[CLEANUP], MinLatency(us), 566
+[CLEANUP], MaxLatency(us), 9263
+[CLEANUP], 50thPercentileLatency(us), 1444
+[CLEANUP], 95thPercentileLatency(us), 5983
+[CLEANUP], 99thPercentileLatency(us), 9263
+[INSERT], Operations, 399831
+[INSERT], AverageLatency(us), 1890.0423353867009
+[INSERT], MinLatency(us), 685
+[INSERT], MaxLatency(us), 46079
+[INSERT], 50thPercentileLatency(us), 1448
+[INSERT], 95thPercentileLatency(us), 4391
+[INSERT], 99thPercentileLatency(us), 5527
+[INSERT], Return=OK, 399831
+[UPDATE], Operations, 400169
+[UPDATE], AverageLatency(us), 1881.1822929812154
+[UPDATE], MinLatency(us), 678
+[UPDATE], MaxLatency(us), 16007
+[UPDATE], 50thPercentileLatency(us), 1464
+[UPDATE], 95thPercentileLatency(us), 4303
+[UPDATE], 99thPercentileLatency(us), 5455
+[UPDATE], Return=OK, 400169

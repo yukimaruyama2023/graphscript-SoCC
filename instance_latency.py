@@ -8,29 +8,31 @@ instance_num_list = [1, 5, 10]
 
 indicator = int(input("Enter 0 or 1 which specify kernel or user: "))
 # 従来手法のデータのファイル名
+
+dir = "Latency-vs-Instance-numa-conf"
 if indicator == 0:
     filename_conventional = [
-        "Latency-vs-Instances/netdata-kernel-instance-1.csv",
-        "Latency-vs-Instances/netdata-kernel-instance-5.csv",
-        "Latency-vs-Instances/netdata-kernel-instance-10.csv"
+        f"{dir}/netdata-kernel-instance-1.csv",
+        f"{dir}/netdata-kernel-instance-5.csv",
+        f"{dir}/netdata-kernel-instance-10.csv"
     ]
 # 提案手法のデータのファイル名
     filename_proposal = [
-        "Latency-vs-Instances/xdp-kernel-instance-1.csv",
-        "Latency-vs-Instances/xdp-kernel-instance-5.csv",
-        "Latency-vs-Instances/xdp-kernel-instance-10.csv"
+        f"{dir}/xdp-kernel-instance-1.csv",
+        f"{dir}/xdp-kernel-instance-5.csv",
+        f"{dir}/xdp-kernel-instance-10.csv"
     ]
 elif indicator == 1:
     filename_conventional = [
-        "Latency-vs-Instances/netdata-user-instance-1.csv",
-        "Latency-vs-Instances/netdata-user-instance-5.csv",
-        "Latency-vs-Instances/netdata-user-instance-10.csv"
+        f"{dir}/netdata-user-instance-1.csv",
+        f"{dir}/netdata-user-instance-5.csv",
+        f"{dir}/netdata-user-instance-10.csv"
     ]
 # 提案手法のデータのファイル名
     filename_proposal = [
-        "Latency-vs-Instances/xdp-user-instance-1.csv",
-        "Latency-vs-Instances/xdp-user-instance-5.csv",
-        "Latency-vs-Instances/xdp-user-instance-10.csv"
+        f"{dir}/xdp-user-instance-1.csv",
+        f"{dir}/xdp-user-instance-5.csv",
+        f"{dir}/xdp-user-instance-10.csv"
     ]
 else:
     print("The number you entered is not moderate")
@@ -57,35 +59,36 @@ if __name__ == "__main__":
     latency_99_proposal = calc_99_percentile(raw_latency_proposal)
     latency_999_conventional = calc_999_percentile(raw_latency_conventional)
     latency_999_proposal = calc_999_percentile(raw_latency_proposal)
+    latency_max_conventional = calc_max_latency(raw_latency_conventional)
+    latency_max_proposal = calc_max_latency(raw_latency_proposal)
 
     print("average  : 0")
     print("90%ile   : 1")
     print("99%ile   : 2")
     print("99.9%ile : 3")
+    print("max      : 4")
     input = int(input("Enter: "))
 
     if input == 0:
         conventional = average_latency_conventional
         proposal = average_latency_proposal
-        print(conventional)
-        print(proposal)
     elif input == 1:
         conventional = latency_90_conventional
         proposal = latency_90_proposal
-        print(conventional)
-        print(proposal)
     elif input == 2:
         conventional = latency_99_conventional
         proposal = latency_99_proposal
-        print(conventional)
-        print(proposal)
     elif input == 3:
         conventional = latency_999_conventional
         proposal = latency_999_proposal
-        print(conventional)
-        print(proposal)
+    elif input == 4:
+        conventional = latency_max_conventional
+        proposal = latency_max_proposal
     else:
-        print("Input moderate number")
+        raise ValueError("Invalid input")
+
+    print([f"{x:.3f}" for x in conventional])
+    print([f"{x:.3f}" for x in proposal])
 
     show_bar_graph(conventional, proposal,
                    instance_num_list, "Memcached Instances", graph_time_unit, log_scale=use_log_scale)
