@@ -111,13 +111,16 @@ def show_bar_graph(conventional, proposal, x_values, x_label, time_unit="us", lo
     ax.set_xticklabels(x_values)
     ax.set_xlabel(x_label, fontsize=16, labelpad=10)
     ax.set_ylabel(f"Latency ({time_unit})", fontsize=16, labelpad=10)
+    ax.grid(axis='y')
 
     # 対数スケールの設定
     if log_scale:
         ax.set_yscale("log")
 
     # 凡例の設定
-    ax.legend(fontsize=14, loc="best")
+    # ax.legend(fontsize=14, loc="best")
+    # ax.legend(loc='upper center', bbox_to_anchor(0.5, 1.15), ncol=3)
+    ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=3)
 
     # レイアウト調整
     fig.tight_layout()
@@ -145,12 +148,14 @@ def show_bar_graph_multi(data_series_list, x_labels, legends,
     ax.set_xticklabels(x_labels)
     ax.set_xlabel(xlabel, fontsize=16, labelpad=10)
     ax.set_ylabel(f"Latency ({unit})", fontsize=16, labelpad=10)
+    ax.grid(axis='y')
 
     # 対数スケール
     if log_scale:
         ax.set_yscale('log')
 
-    ax.legend(loc="upper left", fontsize=14)
+    ax.legend(loc='upper center', bbox_to_anchor=(
+        0.5, 1.15), ncol=3, fontsize=13)
 
     fig.tight_layout()
     plt.show()

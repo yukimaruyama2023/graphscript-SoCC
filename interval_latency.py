@@ -9,7 +9,10 @@ interval_list = [1000, 100, 10]
 indicator = int(input("Enter 0 or 1 which specify kernel or user: "))
 # 従来手法のデータのファイル名
 #
-dir = "Latency-vs-Interval-numa-conf"
+# dir = "Latency-vs-Interval-numa-conf"
+
+# kernel metrics を取得の時 go.d.plugin を切ってある
+dir = "Jun-11-Latency-interval"
 if indicator == 0:
     filename_conventional = [
         f"{dir}/netdata-kernel-Interval-1000ms.csv",

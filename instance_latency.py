@@ -9,7 +9,10 @@ instance_num_list = [1, 5, 10]
 indicator = int(input("Enter 0 or 1 which specify kernel or user: "))
 # 従来手法のデータのファイル名
 
-dir = "Latency-vs-Instance-numa-conf"
+# dir = "Latency-vs-Instance-numa-conf"
+
+# user メトリクス取得の際に go.d.plugin を切ってある
+dir = "Jun-11-Latency-Instance"
 if indicator == 0:
     filename_conventional = [
         f"{dir}/netdata-kernel-instance-1.csv",

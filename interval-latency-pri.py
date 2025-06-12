@@ -4,7 +4,8 @@ from bar_graph_util import *
 
 # 測定データ関係のパラメータ
 interval_list = [1000, 100, 10]
-dir = "Latency-vs-Interval-numa-conf-pri"
+# dir = "Latency-vs-Interval-numa-conf-pri"
+dir = "Jun-11-Latency-Interval"
 
 # 入力受け取り
 indicator = int(input("Enter 0 or 1 which specify kernel or user: ").strip())
@@ -27,7 +28,7 @@ if indicator == 0:
             f"{dir}/netdata-kernel-interval-100ms.csv",
             f"{dir}/netdata-kernel-interval-10ms.csv"
         ],
-        "XDP": [
+        "X-Monitor": [
             f"{dir}/xdp-kernel-interval-1000ms.csv",
             f"{dir}/xdp-kernel-interval-100ms.csv",
             f"{dir}/xdp-kernel-interval-10ms.csv"
@@ -42,12 +43,12 @@ elif indicator == 1:
                 f"{dir}/netdata-user-interval-100ms.csv",
                 f"{dir}/netdata-user-interval-10ms.csv"
             ],
-            "Priority Netdata": [
+            "Netdata with priority": [
                 f"{dir}/netdata-user-interval-1000ms-fifo.csv",
                 f"{dir}/netdata-user-interval-100ms-fifo.csv",
                 f"{dir}/netdata-user-interval-10ms-fifo.csv"
             ],
-            "XDP": [
+            "X-Monitor": [
                 f"{dir}/xdp-user-interval-1000ms.csv",
                 f"{dir}/xdp-user-interval-100ms.csv",
                 f"{dir}/xdp-user-interval-10ms.csv"
