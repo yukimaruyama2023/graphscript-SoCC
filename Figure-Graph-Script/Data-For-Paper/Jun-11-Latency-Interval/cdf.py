@@ -33,11 +33,11 @@ p2 = 1. * np.arange(len(latency2)) / (len(latency2) - 1)
 # plt.tick_params(axis='both', which='minor', labelsize=30)
 
 # fig, ax = plt.subplots(figsize=(6.4, 4.8))
-fig, ax = plt.subplots(figsize=(7, 5))
-ax.plot(latency, p, marker="*", markersize=4,
-        label="X-Monitor")  # , linewidth=3.0)
+fig, ax = plt.subplots(figsize=(7, 6))
 ax.plot(latency2, p2, marker="o", markersize=4,
-        label="Netdata")  # , linewidth=3.0)
+        label="Netdata", color="#1f77b4")  # , linewidth=3.0)
+ax.plot(latency, p, marker="*", markersize=4,
+        label="X-Monitor", color="coral")  # , linewidth=3.0)
 ax.tick_params(axis='both', which='major')
 ax.tick_params(axis='both', which='minor')
 
@@ -73,8 +73,8 @@ ax.set_yticks([0.900, 0.990, 1.000], ["90%", "99%", "100%"])
 
 ax.set_xlabel("latency [ms]")
 ax.set_ylabel("percentile")
-ax.legend(loc='lower right', labelspacing=0)
-# ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.25), ncol=3)
+# ax.legend(loc='lower right', labelspacing=0)
+ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=3)
 # plt.hist(latency, normed=True, cumulative=True, label='CDF',histtype='step', alpha=0.8, color='k')
 
 fig.tight_layout()

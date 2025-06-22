@@ -67,8 +67,8 @@ means = []
 stds = []
 for label in labels:
     values = data[label]
-    means.append(np.mean(values) if values else 0)
-    stds.append(np.std(values) if len(values) > 1 else 0)
+    means.append(np.mean(values) / 1000 if values else 0)
+    stds.append(np.std(values) / 1000 if len(values) > 1 else 0)
 
 # プロット
 plt.figure(figsize=(14, 6))
@@ -77,9 +77,9 @@ x = np.arange(len(labels))
 # 色指定
 colors = [
     "#999999",              # no-monitoring
-    "#E69F00", "#E69F00", "#E69F00",         # netdata
-    "#D55E00", "#D55E00", "#D55E00",         # netdata-priority
-    "#0072B2", "#0072B2", "#0072B2"          # xdp
+    "coral", "coral", "coral",         # netdata
+    "#228B22", "#228B22", "#228B22",         # netdata-priority
+    "#1f77b4", "#1f77b4", "#1f77b4"          # xdp
 ]
 
 plt.bar(x, means, color=colors)
@@ -91,7 +91,7 @@ sub_labels = [
     "1000ms", "100ms", "10ms",                # Netdata-priority
     "1000ms", "100ms", "10ms"                 # X-Monitor
 ]
-plt.xticks(x, sub_labels, fontsize=10)
+plt.xticks(x, sub_labels, fontsize=17)
 
 # 上段グループラベル
 group_labels = [
@@ -108,12 +108,14 @@ group_positions = {
 }
 
 for group, xpos in group_positions.items():
-    plt.text(xpos, -0.05 * max(means), group, ha='center', va='top',
-             fontsize=12, fontweight='bold', transform=plt.gca().transData)
+    plt.text(xpos, -0.1 * max(means), group, ha='center', va='top',
+             fontsize=25, transform=plt.gca().transData)
 
 # 軸などの設定
-plt.ylabel("Throughput (ops/sec)")
+plt.ylabel("Throughput (K ops/sec)", fontsize=25)
 plt.grid(axis='y')
 plt.ylim(0, max(means) * 1.1)
+plt.yticks(fontsize=25)
+plt.xticks(fontsize=20)
 plt.tight_layout()
 plt.show()

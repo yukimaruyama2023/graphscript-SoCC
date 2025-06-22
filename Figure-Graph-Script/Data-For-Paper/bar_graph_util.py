@@ -101,10 +101,18 @@ def show_bar_graph(conventional, proposal, x_values, x_label, time_unit="us", lo
     x_axis = list(range(len(x_values)))
 
     # 棒グラフを描画 (ax に直接描画)
+    # ax.bar(x_axis, conventional, align="edge", width=-
+    #        0.2, label="Netdata", color="#1f77b4")
+    # ax.bar(x_axis, proposal, align="edge", width=0.2,
+    #        label="X-Monitor", color="coral")
     ax.bar(x_axis, conventional, align="edge", width=-
-           0.2, label="Netdata", color="#1f77b4")
+           0.2, label="Netdata", color="coral")
     ax.bar(x_axis, proposal, align="edge", width=0.2,
-           label="X-Monitor", color="coral")
+           label="X-Monitor", color="#1f77b4")
+    # ax.bar(x_axis, conventional, align="edge", width=-
+    #        0.2, label="Netdata", color="#E69400")
+    # ax.bar(x_axis, proposal, align="edge", width=0.2,
+    #        label="X-Monitor", color="#1f77b4")
 
     # 軸ラベルと目盛りの設定
     ax.set_xticks(x_axis)
