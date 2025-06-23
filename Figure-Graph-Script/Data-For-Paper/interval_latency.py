@@ -94,5 +94,13 @@ if __name__ == "__main__":
     print([f"{x:.3f}" for x in conventional])
     print([f"{x:.3f}" for x in proposal])
 
+    # 10ms のデータのみ取り出す（インデックス 2）
+    latency_conventional_10ms = raw_latency_conventional[2]
+    latency_proposal_10ms = raw_latency_proposal[2]
+
+    print(f"[10ms Only] Netdata min: {min(latency_conventional_10ms) / 1000:.3f} ms, "
+          f"max: {max(latency_conventional_10ms) / 1000:.3f} ms")
+    print(f"[10ms Only] XDP     min: {min(latency_proposal_10ms) / 1000:.3f} ms, "
+          f"max: {max(latency_proposal_10ms) / 1000:.3f} ms")
     show_bar_graph(conventional, proposal,
                    interval_list, "Sample Interval (ms)", graph_time_unit, log_scale=use_log_scale)

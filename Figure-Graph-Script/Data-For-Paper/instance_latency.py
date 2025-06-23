@@ -90,8 +90,16 @@ if __name__ == "__main__":
     else:
         raise ValueError("Invalid input")
 
+    print([f"Netdata {x:.3f}" for x in conventional])
+    print([f"X-Monitor {x:.3f}" for x in proposal])
+
     print([f"{x:.3f}" for x in conventional])
     print([f"{x:.3f}" for x in proposal])
+
+    print(f"[Raw Data] Netdata min: {min([min(lst) for lst in raw_latency_conventional]) / 1000:.3f} ms, "
+          f"max: {max([max(lst) for lst in raw_latency_conventional]) / 1000:.3f} ms")
+    print(f"[Raw Data] XDP     min: {min([min(lst) for lst in raw_latency_proposal]) / 1000:.3f} ms, "
+          f"max: {max([max(lst) for lst in raw_latency_proposal]) / 1000:.3f} ms")
 
     show_bar_graph(conventional, proposal,
                    instance_num_list, "Memcached Instances", graph_time_unit, log_scale=use_log_scale)
