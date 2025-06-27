@@ -49,8 +49,8 @@ means = []
 stds = []
 for label in labels:
     values = data[label]
-    means.append(np.mean(values) if values else 0)
-    stds.append(np.std(values) if len(values) > 1 else 0)
+    means.append(np.mean(values) / 1000 if values else 0)
+    stds.append(np.std(values) / 1000 if len(values) > 1 else 0)
 
 # プロット開始
 plt.figure(figsize=(8, 5))
@@ -61,7 +61,8 @@ colors = ["#999999", "#E69F00", "#0072B2"]
 
 # 棒グラフ描画
 plt.bar(x, means, color=colors)
-plt.xticks(x, labels, fontsize=11)
-plt.ylabel("Throughput (ops/sec)", fontsize=12)
+plt.xticks(x, labels, fontsize=14)
+plt.yticks(fontsize=14)
+plt.ylabel("Throughput (K ops/sec)", fontsize=16)
 plt.tight_layout()
 plt.show()
